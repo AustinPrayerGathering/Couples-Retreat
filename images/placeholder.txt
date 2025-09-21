@@ -1,0 +1,11 @@
+Place your image file here and name it "hero-image.jpg" or "hero-image.png"
+
+Instructions:
+1. Save your image file in this images folder
+2. Name it "hero-image.jpg" (or .png/.webp)
+3. The website will automatically display it
+
+Recommended image specifications:
+- Size: 800x600 pixels or larger
+- Format: JPG, PNG, or WebP
+- Subject: Catholic couples, retreat center, or peaceful nature scene
