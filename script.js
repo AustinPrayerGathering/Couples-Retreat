@@ -342,9 +342,46 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Why Modal Functions
+function openWhyModal() {
+    const modal = document.getElementById('whyModal');
+    modal.classList.remove('hidden');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+function closeWhyModal() {
+    const modal = document.getElementById('whyModal');
+    modal.style.display = 'none';
+    modal.classList.add('hidden');
+    document.body.style.overflow = ''; // Restore scrolling
+}
+
+// Close modal when clicking outside of it
+document.addEventListener('DOMContentLoaded', function() {
+    const whyModal = document.getElementById('whyModal');
+    if (whyModal) {
+        whyModal.addEventListener('click', function(e) {
+            if (e.target === whyModal) {
+                closeWhyModal();
+            }
+        });
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const whyModal = document.getElementById('whyModal');
+        if (whyModal && whyModal.style.display === 'flex') {
+            closeWhyModal();
+        }
+    }
+});
+
 // Console welcome message
 console.log(`
-🌿 Welcome to Serenity Springs Retreat Website
+✝️ Welcome to Catholic Couples Retreat Website
 ✨ Built with modern web technologies
 🚀 Ready for local testing and public hosting
 `);
@@ -354,6 +391,8 @@ if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         isValidEmail,
         showNotification,
-        closeNotification
+        closeNotification,
+        openWhyModal,
+        closeWhyModal
     };
 }
