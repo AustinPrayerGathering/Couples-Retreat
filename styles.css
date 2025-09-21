@@ -112,11 +112,17 @@ p {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
+    background: linear-gradient(135deg,
+        rgba(245, 240, 235, 0.95) 0%,
+        rgba(235, 225, 215, 0.95) 25%,
+        rgba(225, 215, 205, 0.95) 50%,
+        rgba(240, 235, 230, 0.95) 100%);
+    backdrop-filter: blur(15px);
+    border-bottom: none;
     z-index: 1000;
     transition: all 0.3s ease;
+    padding: var(--spacing-sm) 0;
+    box-shadow: 0 4px 20px rgba(139, 115, 95, 0.15);
 }
 
 .nav-container {
@@ -129,27 +135,92 @@ p {
     height: 70px;
 }
 
+.nav-logo {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #1e3a21 100%);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-medium);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-logo:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-large);
+}
+
 .nav-logo h2 {
     font-family: var(--font-heading);
-    color: var(--primary-color);
+    color: white;
     margin: 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: var(--spacing-lg);
+    gap: 8px;
+}
+
+.nav-menu li {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 0.5px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    transition: all 0.2s ease-out;
+    position: relative;
+}
+
+.nav-menu li:hover {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transform: translateY(-1px);
+}
+
+.nav-menu li:active {
+    transform: translateY(0px);
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .nav-menu a {
+    display: block;
+    padding: 12px 20px;
     text-decoration: none;
-    color: var(--text-dark);
+    color: #1d1d1f;
     font-weight: 500;
-    transition: color 0.3s ease;
+    font-size: 15px;
+    line-height: 1.2;
+    border-radius: 20px;
+    transition: all 0.2s ease-out;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    letter-spacing: -0.01em;
 }
 
 .nav-menu a:hover {
-    color: var(--primary-color);
+    color: #0066cc;
+}
+
+.nav-menu a:active {
+    opacity: 0.8;
+}
+
+/* Apple-style focus states */
+.nav-menu a:focus {
+    outline: 2px solid #0066cc;
+    outline-offset: 2px;
+}
+
+/* Subtle pressed state */
+.nav-menu li:active a {
+    color: #0066cc;
 }
 
 .hamburger {
@@ -172,8 +243,21 @@ p {
     align-items: center;
     min-height: 100vh;
     padding: var(--spacing-2xl) var(--spacing-md);
-    background: linear-gradient(135deg, #f0f8f0 0%, #e8f5e8 100%);
+    background:
+        linear-gradient(135deg, rgba(240, 248, 240, 0.7) 0%, rgba(232, 245, 232, 0.7) 100%),
+        url('images/ceremony-family-photos-88.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
     margin-top: 70px;
+    position: relative;
+}
+
+.hero-content,
+.hero-image {
+    position: relative;
+    z-index: 2;
 }
 
 .hero-content {
@@ -942,4 +1026,462 @@ html {
     color: var(--primary-color);
     margin: 0;
     text-align: center;
+}
+
+/* Schedule Section Styles */
+.schedule-section {
+    padding: var(--spacing-2xl) 0;
+    background-color: var(--background-white);
+}
+
+.schedule-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.schedule-header-row {
+    display: grid;
+    grid-template-columns: 180px 1fr 1fr;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.schedule-day-header h3 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 0;
+    padding: var(--spacing-md);
+    background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--primary-color);
+}
+
+.schedule-aligned-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.schedule-time-row {
+    display: grid;
+    grid-template-columns: 180px 1fr 1fr;
+    gap: var(--spacing-md);
+    align-items: start;
+    padding: var(--spacing-sm);
+    background: var(--background-white);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.schedule-time-row:hover {
+    transform: translateX(3px);
+    box-shadow: var(--shadow-medium);
+}
+
+.schedule-time-row.highlight {
+    background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
+    border: 2px solid var(--primary-color);
+    box-shadow: var(--shadow-medium);
+}
+
+.schedule-time-row.highlight:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-large);
+}
+
+.time-slot {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    text-align: center;
+    padding: var(--spacing-sm);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+}
+
+.day-activity {
+    padding: var(--spacing-sm);
+    background: var(--background-white);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.day-activity.empty {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    opacity: 0.7;
+}
+
+.day-activity.tall {
+    min-height: 80px;
+}
+
+.day-activity.continued {
+    background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+    border-color: var(--accent-color);
+}
+
+.day-activity h4 {
+    color: var(--primary-color);
+    font-size: 1rem;
+    margin-bottom: var(--spacing-xs);
+    font-family: var(--font-primary);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.day-activity.empty h4 {
+    color: var(--text-light);
+}
+
+.day-activity p {
+    color: var(--text-dark);
+    font-size: 0.85rem;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.day-activity.empty p {
+    color: var(--text-light);
+    font-style: italic;
+}
+
+.schedule-note {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--accent-color);
+    text-align: center;
+}
+
+.schedule-note p {
+    color: var(--text-dark);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    font-style: italic;
+}
+
+/* About Br. Colin Section Styles */
+.about-colin-section {
+    padding: var(--spacing-2xl) 0;
+    background-color: var(--background-light);
+}
+
+.colin-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.colin-intro-with-image {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+    margin-bottom: var(--spacing-2xl);
+    padding: var(--spacing-lg);
+    background: var(--background-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-medium);
+}
+
+.colin-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.colin-photo {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+    box-shadow: var(--shadow-large);
+    border: 3px solid var(--primary-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.colin-photo:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-large);
+}
+
+.colin-image-placeholder {
+    width: 100%;
+    max-width: 220px;
+    height: 280px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    border: 3px solid var(--primary-color);
+    box-shadow: var(--shadow-large);
+}
+
+.colin-intro {
+    text-align: left;
+}
+
+.colin-intro p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.colin-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.colin-link-card {
+    background: var(--background-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-medium);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.colin-link-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-large);
+}
+
+.link-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+    display: block;
+}
+
+.colin-link-card h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+    font-family: var(--font-heading);
+}
+
+.colin-link-card p {
+    color: var(--text-dark);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+}
+
+.colin-link-card .btn {
+    margin-top: var(--spacing-md);
+}
+
+.colin-quote {
+    background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--primary-color);
+    text-align: center;
+    box-shadow: var(--shadow-medium);
+}
+
+.colin-quote blockquote {
+    margin: 0;
+}
+
+.colin-quote p {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: var(--primary-color);
+    font-style: italic;
+    margin-bottom: var(--spacing-md);
+    font-weight: 500;
+}
+
+.colin-quote cite {
+    color: var(--text-dark);
+    font-size: 1rem;
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* Responsive adjustments for About Br. Colin section */
+@media (max-width: 768px) {
+    .colin-intro-with-image {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        text-align: center;
+    }
+    
+    .colin-photo {
+        max-width: 200px;
+    }
+    
+    .colin-image-placeholder {
+        max-width: 200px;
+        height: 250px;
+        font-size: 1.8rem;
+    }
+    
+    .colin-intro {
+        text-align: center;
+    }
+    
+    .colin-links {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .colin-link-card {
+        padding: var(--spacing-lg);
+    }
+    
+    .link-icon {
+        font-size: 2.5rem;
+    }
+    
+    .colin-link-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .colin-quote {
+        padding: var(--spacing-lg);
+    }
+    
+    .colin-quote p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .colin-intro-with-image {
+        padding: var(--spacing-md);
+    }
+    
+    .colin-photo {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .colin-image-placeholder {
+        width: 120px;
+        height: 120px;
+        font-size: 1.5rem;
+    }
+    
+    .colin-link-card {
+        padding: var(--spacing-md);
+    }
+    
+    .colin-quote {
+        padding: var(--spacing-md);
+    }
+    
+    .colin-quote p {
+        font-size: 1rem;
+    }
+}
+
+/* Responsive adjustments for schedule section */
+@media (max-width: 1024px) {
+    .schedule-header-row {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .schedule-time-row {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .time-slot {
+        font-size: 1rem;
+        font-weight: 700;
+        background: var(--primary-color);
+        color: white;
+        margin-bottom: var(--spacing-xs);
+    }
+    
+    .day-activity {
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .day-activity:before {
+        content: attr(data-day);
+        font-weight: 600;
+        color: var(--primary-color);
+        font-size: 0.9rem;
+        margin-bottom: var(--spacing-xs);
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .schedule-day-header h3 {
+        font-size: 1.5rem;
+        padding: var(--spacing-sm);
+    }
+    
+    .schedule-time-row {
+        padding: var(--spacing-xs);
+    }
+    
+    .time-slot {
+        font-size: 0.9rem;
+        min-height: 50px;
+    }
+    
+    .day-activity {
+        min-height: 50px;
+        padding: var(--spacing-xs);
+    }
+    
+    .day-activity h4 {
+        font-size: 0.9rem;
+    }
+    
+    .day-activity p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .schedule-item {
+        padding: var(--spacing-sm);
+    }
+    
+    .schedule-time {
+        font-size: 0.9rem;
+    }
+    
+    .schedule-activity h4 {
+        font-size: 0.95rem;
+    }
+    
+    .schedule-activity p {
+        font-size: 0.8rem;
+    }
+    
+    .schedule-note {
+        padding: var(--spacing-md);
+    }
+    
+    .schedule-note p {
+        font-size: 0.9rem;
+    }
 }
