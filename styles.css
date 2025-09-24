@@ -172,8 +172,7 @@ p {
     }
     
     .btn-register {
-        width: 100%;
-        max-width: 280px;
+        width: auto;
         font-size: 1rem;
         padding: 0.875rem 1.5rem;
     }
