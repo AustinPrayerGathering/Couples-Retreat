@@ -1307,7 +1307,7 @@ html {
     }
     
     .schedule-time-row {
-        grid-template-columns: 150px 1fr;
+        grid-template-columns: 300px 1fr;
         padding: 10px 12px;
     }
     
@@ -1349,7 +1349,7 @@ html {
     }
     
     .schedule-time-row {
-        grid-template-columns: 140px 1fr;
+        grid-template-columns: 280px 1fr;
         padding: 8px 10px;
     }
     
