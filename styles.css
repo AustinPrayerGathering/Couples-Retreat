@@ -1289,7 +1289,7 @@ html {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* Mobile responsiveness for Apple-like schedule */
+/* Mobile responsiveness - Simplified schedule layout */
 @media (max-width: 768px) {
     .schedule-content {
         padding: 0 0.5rem;
@@ -1306,30 +1306,67 @@ html {
         padding: 0.875rem 1rem;
     }
     
+    /* Simplified mobile layout - single column */
     .schedule-time-row {
-        grid-template-columns: 1fr 2fr;
-        padding: 10px 12px;
+        display: block;
+        padding: 12px 16px;
+        margin-bottom: 8px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 12px;
+        border-left: 3px solid transparent;
     }
     
     .time-slot {
-        font-size: 11px;
-        line-height: 1.1;
-        white-space: nowrap;
-        text-align: center;
+        font-size: 12px;
+        font-weight: 600;
+        color: #6e6e73;
+        text-align: left;
+        margin-bottom: 4px;
+        display: block;
     }
     
     .day-activity {
-        justify-content: center;
-        text-align: center;
+        display: block;
+        text-align: left;
     }
     
     .day-activity h4 {
-        font-size: 14px;
+        font-size: 15px;
         line-height: 1.2;
+        margin: 0;
+        color: #1d1d1f;
     }
     
-    .day-activity p {
-        font-size: 12px;
+    /* Maintain color coding for mobile */
+    .schedule-time-row.worship {
+        background: rgba(255, 248, 220, 0.95);
+        border-left-color: #f59e0b;
+    }
+    
+    .schedule-time-row.session {
+        background: rgba(239, 246, 255, 0.95);
+        border-left-color: #3b82f6;
+    }
+    
+    .schedule-time-row.mass {
+        background: rgba(240, 253, 244, 0.95);
+        border-left-color: #10b981;
+    }
+    
+    .schedule-time-row.break {
+        background: rgba(254, 243, 199, 0.95);
+        border-left-color: #d97706;
+    }
+    
+    .schedule-time-row.meal {
+        background: rgba(255, 241, 242, 0.95);
+        border-left-color: #ef4444;
+    }
+    
+    .schedule-time-row.prayer {
+        background: rgba(245, 243, 255, 0.95);
+        border-left-color: #8b5cf6;
     }
 }
 
@@ -1349,28 +1386,17 @@ html {
     }
     
     .schedule-time-row {
-        grid-template-columns: 1fr 2fr;
-        padding: 8px 10px;
+        padding: 10px 12px;
+        margin-bottom: 6px;
     }
     
     .time-slot {
-        font-size: 10px;
-        line-height: 1.1;
-        white-space: nowrap;
-        text-align: center;
-    }
-    
-    .day-activity {
-        justify-content: center;
-        text-align: center;
+        font-size: 11px;
+        margin-bottom: 3px;
     }
     
     .day-activity h4 {
-        font-size: 13px;
-    }
-    
-    .day-activity p {
-        font-size: 11px;
+        font-size: 14px;
     }
 }
 
