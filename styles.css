@@ -1307,7 +1307,7 @@ html {
     }
     
     .schedule-time-row {
-        grid-template-columns: 130px 1fr;
+        grid-template-columns: 150px 1fr;
         padding: 10px 12px;
     }
     
@@ -1315,6 +1315,12 @@ html {
         font-size: 11px;
         line-height: 1.1;
         white-space: nowrap;
+        text-align: center;
+    }
+    
+    .day-activity {
+        justify-content: center;
+        text-align: center;
     }
     
     .day-activity h4 {
@@ -1343,7 +1349,7 @@ html {
     }
     
     .schedule-time-row {
-        grid-template-columns: 120px 1fr;
+        grid-template-columns: 140px 1fr;
         padding: 8px 10px;
     }
     
@@ -1351,6 +1357,12 @@ html {
         font-size: 10px;
         line-height: 1.1;
         white-space: nowrap;
+        text-align: center;
+    }
+    
+    .day-activity {
+        justify-content: center;
+        text-align: center;
     }
     
     .day-activity h4 {
