@@ -159,6 +159,26 @@ p {
     flex-shrink: 0;
 }
 
+/* Mobile responsiveness for image and button */
+@media (max-width: 768px) {
+    .image-and-button-container {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+    
+    .register-button-container {
+        width: 100%;
+    }
+    
+    .btn-register {
+        width: 100%;
+        max-width: 280px;
+        font-size: 1rem;
+        padding: 0.875rem 1.5rem;
+    }
+}
+
 /* Navigation */
 .navbar {
     position: fixed;
