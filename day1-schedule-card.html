@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1 Schedule Card - Catholic Couples Retreat</title>
+    <style>
+        @media print {
+            * {
+                visibility: hidden;
+            }
+            .card, .card * {
+                visibility: visible;
+            }
+            .card {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100% !important;
+                max-width: none !important;
+                margin: 0 !important;
+                padding: 20px !important;
+                box-shadow: none !important;
+                border: 3px solid #2c5530 !important;
+                border-image: none !important;
+                background: white !important;
+            }
+            .card::before {
+                display: none !important;
+            }
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            .no-print {
+                display: none !important;
+                visibility: hidden !important;
+            }
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            margin: 20px;
+            background: white;
+            color: #333;
+            line-height: 1.4;
+        }
+        
+        .card {
+            max-width: 5.5in;
+            margin: 0 auto;
+            border: 9px solid;
+            border-image: linear-gradient(135deg, #2c5530 0%, #8fbc8f 50%, #d4a574 100%) 1;
+            border-radius: 16px;
+            padding: 24px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            box-shadow:
+                0 8px 32px rgba(44, 85, 48, 0.15),
+                0 4px 16px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            position: relative;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -9px;
+            left: -9px;
+            right: -9px;
+            bottom: -9px;
+            background: linear-gradient(135deg, #2c5530 0%, #8fbc8f 50%, #d4a574 100%);
+            border-radius: 16px;
+            z-index: -1;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+            border-bottom: 9px solid;
+            border-image: linear-gradient(90deg, #2c5530 0%, #8fbc8f 50%, #2c5530 100%) 1;
+            padding-bottom: 16px;
+            position: relative;
+        }
+        
+        .header::after {
+            content: '✨';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 0 8px;
+            font-size: 12px;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            margin: 0 0 8px 0;
+            color: #2c5530;
+            font-weight: 700;
+        }
+        
+        .header .date {
+            font-size: 18px;
+            color: #666;
+            font-weight: 600;
+        }
+        
+        .schedule-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 2px;
+        }
+        
+        .schedule-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        /* Gradient backgrounds for alternating rows */
+        .schedule-item:nth-child(1) { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); }
+        .schedule-item:nth-child(2) { background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%); }
+        .schedule-item:nth-child(3) { background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%); }
+        .schedule-item:nth-child(4) { background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%); }
+        .schedule-item:nth-child(5) { background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%); }
+        .schedule-item:nth-child(6) { background: linear-gradient(135deg, #e2e3e5 0%, #d6d8db 100%); }
+        .schedule-item:nth-child(7) { background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%); }
+        .schedule-item:nth-child(8) { background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%); }
+        .schedule-item:nth-child(9) { background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%); }
+        .schedule-item:nth-child(10) { background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%); }
+        .schedule-item:nth-child(11) { background: linear-gradient(135deg, #e2e3e5 0%, #d6d8db 100%); }
+        .schedule-item:nth-child(12) { background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%); }
+        .schedule-item:nth-child(13) { background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%); }
+        .schedule-item:nth-child(14) { background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%); }
+        
+        .time {
+            font-size: 14px;
+            font-weight: 700;
+            color: #2c5530;
+            min-width: 140px;
+            text-align: center;
+        }
+        
+        .activity {
+            font-size: 16px;
+            color: #333;
+            flex: 1;
+            font-weight: 500;
+            text-align: center;
+        }
+        
+        .activity-type {
+            font-weight: 500;
+        }
+        
+        .worship { color: #8b5a2b; }
+        .session { color: #1e40af; }
+        .break { color: #dc6614; }
+        .meal { color: #dc2626; }
+        .mass { color: #059669; }
+        .activity-icon { color: #6b7280; }
+        
+        .footer {
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 2px solid;
+            border-image: linear-gradient(90deg, transparent 0%, #d4a574 50%, transparent 100%) 1;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '⛪';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 0 8px;
+            font-size: 12px;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #2c5530;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .print-button:hover {
+            background: #1e3a21;
+        }
+        
+        @media print {
+            .card {
+                box-shadow: none;
+                border: 2px solid #2c5530;
+                max-width: none;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button no-print" onclick="window.print()">🖨️ Print Card</button>
+    
+    <div class="card">
+        <div class="header">
+            <h1>✝️ Catholic Couples Retreat Schedule</h1>
+            <div class="date">Saturday, October 18th, 2025 - Day 1</div>
+        </div>
+        
+        <div class="schedule">
+            <div class="schedule-item">
+                <div class="time">8:45 AM</div>
+                <div class="activity activity-icon">📝 Registration</div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="time">9:00 - 9:30 AM</div>
+                <div class="activity worship">🎵 Praise and Worship</div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="time">9:30 - 10:00 AM</div>
+                <div class="activity activity-icon">👋 Couple Introductions</div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="time">10:00 - 11:00 AM</div>
+                <div class="activity session">📖 Session 1</div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="time">11:00 - 11:15 AM</div>
+                <div class="activity activity-icon">✍️ Activity 1</div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="time">11:15 - 11:45 AM</div>
+                <div class="activity break">☕ Coffee Break</div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="time">11:45 AM - 12:00 PM</div>
+                <div class="activity worship">🎵 Praise & Worship</div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="time">12:00 - 1:00 PM</div>
+                <div class="activity session">📖 Session 2</div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="time">1:00 - 2:00 PM</div>
+                <div class="activity meal">🍽️ Lunch</div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="time">2:00 - 2:30 PM</div>
+                <div class="activity worship">🎵 Praise and Worship</div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="time">2:30 - 3:30 PM</div>
+                <div class="activity session">📖 Session 3</div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="time">3:30 - 4:00 PM</div>
+                <div class="activity break">☕ Coffee Break</div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="time">4:00 - 5:00 PM</div>
+                <div class="activity activity-icon">🤝 Activity 2</div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="time">5:00 PM</div>
+                <div class="activity mass">⛪ Holy Mass</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            Georgetown Community Center • 445 E Morrow St, Georgetown, TX 78626
+        </div>
+    </div>
+</body>
+</html>
